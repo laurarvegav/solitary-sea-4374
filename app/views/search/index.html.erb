@@ -1,0 +1,30 @@
+<h1>Affiliats to Fire Nation</h1>
+
+<h4>Number of people: <%= @members.count %></h4>
+<h3>First 25 Members</h3>
+<% @members.take(25).each do |member| %>
+  <section id="member-<%= member.id %>">
+    <h4><%= member.name %><br><h4>
+    <%= image_tag(member.photo_path, size: "100x100") if member.photo_path %>
+
+    <h6>Allies:</h6><div class="Allies">
+      <ul><% member.allies.each do |ally| %>
+        <%= ally %>
+      <%end%></ul>
+    </div>
+
+    <h6>Enemies:</h6><div class="Enemies">
+      <% if member.enemies.empty? %>
+      None
+      <%else%>
+        <ul><% member.enemies.each do |enemy| %>
+          <%= enemy %>
+        <%end%></ul>
+      <%end%>
+    </div>
+
+    <h6>Affiliations:</h6><div class="Affiliations">
+      <ul><%= member.affiliation %>
+    </div>
+  </section><br>
+<% end %>
