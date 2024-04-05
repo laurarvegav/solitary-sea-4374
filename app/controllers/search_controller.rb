@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
   def index
-    require 'pry'; binding.pry
+    @members = ServiceFacade.new.affiliation_members(params[:nation])
   end
 end
